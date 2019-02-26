@@ -15,6 +15,8 @@ plot6 <- function() {
   total1 <- with(mobile_based1, tapply(Emissions, year, sum, na.rm=TRUE))
   total2 <- with(mobile_based2, tapply(Emissions, year, sum, na.rm=TRUE))
   par(mfrow=c(1,2))
-  plot(total1)
-  plot(total2)
+  barplot(total1, col=c("red", "green", "blue", "yellow"), main="Motor vehicle - Baltimore")
+  barplot(total2, col=c("red", "green", "blue", "yellow"), main="Motor vehicle - Los Angeles")
+  dev.copy(png,'plot6.png')
+  dev.off()
 }

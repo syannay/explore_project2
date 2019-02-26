@@ -6,5 +6,8 @@ plot1 <- function() {
   ##SCC <- readRDS("Source_Classification_Code.rds")
   ##mrg <- merge(NEI, SCC, by="SCC")
   total <- with(NEI, tapply(Emissions, year, sum, na.rm=TRUE))
-  plot(x=as.numeric(names(total)), y=total)
+  ylabs<-round(total/1000000, 2)
+  barplot(ylabs, col = c("red", "green", "blue", "yellow"), main="Total Emission of PM2.5 (in Millions)")
+  dev.copy(png,'plot1.png')
+  dev.off()
 }

@@ -8,5 +8,8 @@ plot2 <- function() {
   ##mrg <- merge(NEI, SCC, by="SCC")
   city <- subset(NEI, fips=="24510")
   total <- with(city, tapply(Emissions, year, sum, na.rm=TRUE))
-  plot(x=as.numeric(names(total)), y=total)
+  ylabs<-round(total/1000, 2)
+  barplot(ylabs, col = c("red", "green", "blue", "yellow"), main="Total Emission of PM2.5 in Baltimore(in Killos)")
+  dev.copy(png,'plot2.png')
+  dev.off()
 }
